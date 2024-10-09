@@ -15,8 +15,8 @@ public interface ExampleService {
 
     /**
      * 데이터 조회 예제
-     * @param exampleRequest ExampleRequest
+     * @param id Long;
      * @return ResponseEntity<CommonResponse>
      */
-    ResponseEntity<CommonResponse> selectExample(ExampleRequest exampleRequest);
+    ResponseEntity<CommonResponse> selectExample(Long id);
 }

@@ -6,9 +6,8 @@ import lombok.Getter;
 @Getter
 public class ExampleRequest {
 
-    private int Id;
+    private Long Id;
 
-    @NotBlank(message = "샘플 텍스트는 필수로 입력되어야 합니다.")
     private String text;
 
 }
