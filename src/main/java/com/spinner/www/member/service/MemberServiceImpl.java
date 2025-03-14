@@ -78,7 +78,8 @@ public class MemberServiceImpl implements MemberService {
      * @param memberEmail String
      * @return 조회한 결과 Boolean
      */
-    private boolean isEmailInvalid (String memberEmail){
+    @Override
+    public boolean isEmailInvalid (String memberEmail){
         return memberRepo.existsByMemberEmail(memberEmail);
     }
 
