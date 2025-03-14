@@ -53,4 +53,11 @@ public interface MemberService {
      * @param memberSessionDto MemberLoginDto
      */
     void makeLoginToken(Member member, MemberSessionDto memberSessionDto);
+
+    /**
+     * 이메일 중복검사
+     * @param memberEmail String
+     * @return boolean
+     */
+    boolean isEmailInvalid (String memberEmail);
 }
