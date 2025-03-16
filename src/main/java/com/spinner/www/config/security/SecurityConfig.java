@@ -1,4 +1,4 @@
-package com.spinner.www.config;
+package com.spinner.www.config.security;
 
 import com.spinner.www.config.handler.CustomerLogoutHandler;
 import com.spinner.www.member.dto.SessionInfo;
@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Spring Security
@@ -27,6 +28,7 @@ public class SecurityConfig {
 
     private final SessionInfo sessionInfo;
     private final CustomerLogoutHandler customerLogoutHandler;
+    private final JwtTokenFilter jwtTokenFilter;
 
     /**
      * 비밀번호 단방향 암호화
@@ -57,6 +59,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll()
                 )
+                // 토큰 검증
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 // 소셜 로그인
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo
