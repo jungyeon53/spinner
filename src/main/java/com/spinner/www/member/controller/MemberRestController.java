@@ -78,4 +78,11 @@ public class MemberRestController {
     public String test(){
         return "success";
     }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<CommonResponse> refreshToken(
+            @CookieValue(value = "refreshToken", required = false) String refreshToken,
+            @RequestParam("memberIdx") Long memberIdx) {
+        return tokenService.refreshToken(refreshToken, memberIdx);
+    }
 }
